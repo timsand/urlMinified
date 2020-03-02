@@ -15,7 +15,11 @@ app.use(express.static(indexHTML));
 
 
 
-
+app.post('/miniurl', (req, res) => {
+  console.log('what up, I got it');
+  console.log(req.body)
+  res.end();
+})
 
 
 
