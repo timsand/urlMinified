@@ -12,14 +12,14 @@ app.use(express.static(indexHTML));
 
 
 app.post('/miniurl', (req, res) => {
-  console.log('what up, I got it');
-  console.log(req.body);
+  let destination = req.body.destination;
+  console.log(destination);
 
-  getNewUrl()
+  getNewUrl(destination)
     .then(response => response.json())
     .then((data) => {
-      console.log(data.shortUrl);
-      res.end();
+      data = JSON.stringify(data.shortUrl);
+      res.send(data);
     })
     .catch((err) => {
       console.log('ERRORS!');

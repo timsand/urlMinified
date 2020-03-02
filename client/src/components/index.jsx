@@ -6,7 +6,9 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      input: ''
+      input: '',
+      error: false,
+      rebrandedUrl: null
     };
 
     this.handleInput.bind(this);
@@ -21,8 +23,20 @@ class App extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     Axios.post("/miniurl", {
-      stuff: 'dafsdfsfsf'
+      destination: this.state.input
     })
+      .then((res) => {
+        let rebrandedUrl = res.data;
+        this.setState({
+          rebrandedUrl: rebrandedUrl
+        })
+      })
+      .catch((err) => {
+        console.log(err);
+        this.setState({
+          error: true
+        })
+      })
   }
 
 
