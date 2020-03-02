@@ -18,12 +18,19 @@ app.post('/miniurl', (req, res) => {
   getNewUrl(destination)
     .then(response => response.json())
     .then((data) => {
+      if (data.errors) {
+        console.log(data.errors[0].verbose);
+        res.status(400).send(JSON.stringify(data.errors[0].verbose));
+      }
+      console.log(data);
       data = JSON.stringify(data.shortUrl);
       res.send(data);
     })
     .catch((err) => {
       console.log('ERRORS!');
       console.log(err);
+      console.log(err.body);
+
       res.status(400).send();
     })
 })

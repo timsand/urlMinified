@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Axios from "axios";
+import Rebranded from "./Rebranded.jsx";
 
 class App extends React.Component {
   constructor() {
@@ -28,7 +29,8 @@ class App extends React.Component {
       .then((res) => {
         let rebrandedUrl = res.data;
         this.setState({
-          rebrandedUrl: rebrandedUrl
+          rebrandedUrl: rebrandedUrl,
+          error: false
         })
       })
       .catch((err) => {
@@ -46,14 +48,21 @@ class App extends React.Component {
 
 
   render() {
-    return (
-      <div>
-        <form onSubmit={(e) => { this.handleSubmit(e) }}>
-          <label>URL: </label>
-          <input type="text" onChange={(e) => { this.handleInput(e) }} value={this.state.input}></input>
-        </form>
-      </div >
-    )
+    if (this.state.rebrandedUrl) {
+      return (
+        <Rebranded url={this.state.rebrandedUrl} />
+      )
+    } else {
+      return (
+        <div>
+          <form onSubmit={(e) => { this.handleSubmit(e) }}>
+            <label>URL: </label>
+            <input type="text" onChange={(e) => { this.handleInput(e) }} value={this.state.input}></input>
+          </form>
+          <span className={`error ` + this.state.error ? `errorHidden` : `errorVisible`}>There was an error processing your request. Please try again!</span>
+        </div >
+      )
+    }
   }
 }
 
