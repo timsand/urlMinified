@@ -1,9 +1,9 @@
 const fetch = require('node-fetch');
-const SECRET = process.env.urlkey || require('./secrets.js');
+// const SECRET = process.env.urlkey || require('./secrets.js');
+const SECRET = "f1bd656040634e7d9638d0f21bfb9788";
 
 const getNewUrl = (destination) => {
 
-  console.log(SECRET);
   let urlToMinify = {
     destination: destination,
     domain: { fullName: "rebrand.ly" }
