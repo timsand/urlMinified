@@ -1,7 +1,7 @@
 import React from "react";
 
 
-const Rebranded = ({ url }) => {
+const Rebranded = ({ url, reset }) => {
 
 
   return (
@@ -11,7 +11,7 @@ const Rebranded = ({ url }) => {
         <a href={`http://www.${url}`} >{url}</a>
       </div>
       <div id="RebrandedButtonContainer">
-        <button id="RebrandedHomeButton">Another URL</button>
+        <button id="RebrandedHomeButton" onClick={() => reset()}>Another URL</button>
       </div>
     </div>
   )

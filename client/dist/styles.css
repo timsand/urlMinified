@@ -1,5 +1,18 @@
 
+button {
+  cursor: pointer;
+  height: 5rem;
+  width: 10rem;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  background-color: pink;
+  transition: background-color 0.5s ease;
+}
 
+button:hover {
+  cursor: pointer;
+  background-color: #ff8298;
+}
 
 
 #masterContainer {
@@ -10,8 +23,18 @@
   align-items: center;
 }
 
+#appFormContainer {
+  display: flex;
+  align-items: center;
+}
 
-
+#appPostButton {
+  height: 3rem;
+  width: 6rem;
+  font-size: 1rem;
+  margin-left: 2rem;
+  border-radius: 8px;
+}
 
 
 
@@ -38,17 +61,10 @@
 }
 
 #RebrandedHomeButton {
-  cursor: pointer;
   margin-top: 3rem;
-  height: 5rem;
-  width: 10rem;
-  font-size: 1.2rem;
-  border-radius: 8px;
-  background-color: pink;
-  transition: background-color 0.5s ease;
 }
 
-#RebrandedHomeButton:hover {
+/* #RebrandedHomeButton:hover {
   cursor: pointer;
   background-color: #ff8298;
-}
+} */

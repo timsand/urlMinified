@@ -12,7 +12,8 @@ class App extends React.Component {
       rebrandedUrl: null
     };
 
-    this.handleInput.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+    this.reset = this.reset.bind(this);
   }
 
 
@@ -41,6 +42,10 @@ class App extends React.Component {
       })
   }
 
+  reset() {
+    this.setState({ input: '', error: false, rebrandedUrl: null })
+  }
+
 
 
 
@@ -48,20 +53,26 @@ class App extends React.Component {
 
 
   render() {
+    const errorMessage = this.state.error ? (<><span>There was an error processing your request. Please try again!</span></>) : (null);
     if (this.state.rebrandedUrl) {
       return (
         <div id="masterContainer">
-          <Rebranded url={this.state.rebrandedUrl} />
+          <Rebranded url={this.state.rebrandedUrl} reset={this.reset} />
         </div>
       )
     } else {
       return (
         <div id='masterContainer'>
-          <form onSubmit={(e) => { this.handleSubmit(e) }}>
-            <label>URL: </label>
-            <input type="text" onChange={(e) => { this.handleInput(e) }} value={this.state.input}></input>
-          </form>
-          <span className={`error ` + this.state.error ? `errorHidden` : `errorVisible`}>There was an error processing your request. Please try again!</span>
+          <div id="appFormContainer">
+            <form onSubmit={(e) => { this.handleSubmit(e) }}>
+              <label>URL: </label>
+              <input type="text" onChange={(e) => { this.handleInput(e) }} value={this.state.input}></input>
+            </form>
+            <button id="appPostButton" onClick={(e) => { this.handleSubmit(e) }}>Enter</button>
+          </div>
+          <div id="appErrorContainer">
+            {errorMessage}
+          </div>
         </div >
       )
     }
