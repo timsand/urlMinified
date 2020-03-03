@@ -5,7 +5,6 @@ const getNewUrl = (destination) => {
 
   let urlToMinify = {
     destination: destination,
-    // destination: "https://www.youtube.com/watch?v=71sj1LVELoc",
     domain: { fullName: "rebrand.ly" }
   }
   let requestHeaders = {
