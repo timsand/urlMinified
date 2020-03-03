@@ -18,7 +18,9 @@ app.post('/miniurl', (req, res) => {
     .then(response => response.json())
     .then((data) => {
       if (data.errors) {
-        res.status(400).send(JSON.stringify(data.errors[0].verbose));
+        //there is data in errors at data.errors[0].verbose
+        //can use this information sometime in the future for more detailed errors
+        res.status(400).send();
       }
       data = JSON.stringify(data.shortUrl);
       res.send(data);
