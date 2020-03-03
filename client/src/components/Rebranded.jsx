@@ -5,9 +5,14 @@ const Rebranded = ({ url }) => {
 
 
   return (
-    <div>
-      <span>Success! Your new URL is: </span>
-      <span>{url}</span>
+    <div id="RebrandedContainer">
+      <div id="RebrandedUrlContainer">
+        <span>Success! Your new URL is: </span>
+        <a href={`http://www.${url}`} >{url}</a>
+      </div>
+      <div id="RebrandedButtonContainer">
+        <button id="RebrandedHomeButton">Another URL</button>
+      </div>
     </div>
   )
 }

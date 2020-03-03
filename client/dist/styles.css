@@ -1,0 +1,54 @@
+
+
+
+
+#masterContainer {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+
+
+
+
+#RebrandedContainer {
+  display: flex;
+  flex-flow: column;
+}
+
+#RebrandedUrlContainer {
+
+}
+
+#RebrandedUrl {
+  cursor: pointer;
+  color: blue;
+  size: 2rem;
+}
+
+#RebrandedButtonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+#RebrandedHomeButton {
+  cursor: pointer;
+  margin-top: 3rem;
+  height: 5rem;
+  width: 10rem;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  background-color: pink;
+  transition: background-color 0.5s ease;
+}
+
+#RebrandedHomeButton:hover {
+  cursor: pointer;
+  background-color: #ff8298;
+}

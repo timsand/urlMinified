@@ -50,11 +50,13 @@ class App extends React.Component {
   render() {
     if (this.state.rebrandedUrl) {
       return (
-        <Rebranded url={this.state.rebrandedUrl} />
+        <div id="masterContainer">
+          <Rebranded url={this.state.rebrandedUrl} />
+        </div>
       )
     } else {
       return (
-        <div>
+        <div id='masterContainer'>
           <form onSubmit={(e) => { this.handleSubmit(e) }}>
             <label>URL: </label>
             <input type="text" onChange={(e) => { this.handleInput(e) }} value={this.state.input}></input>
