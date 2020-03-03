@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const SECRET = require('./secrets.js');
+const SECRET = process.env.urlkey || require('./secrets.js');
 
 const getNewUrl = (destination) => {
 
