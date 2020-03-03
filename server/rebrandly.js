@@ -1,6 +1,4 @@
 const fetch = require('node-fetch');
-// const SECRET = process.env.urlkey || require('./secrets.js');
-const SECRET = "f1bd656040634e7d9638d0f21bfb9788";
 
 const getNewUrl = (destination) => {
 
@@ -10,7 +8,7 @@ const getNewUrl = (destination) => {
   }
   let requestHeaders = {
     "Content-Type": "application/json",
-    "apikey": `${SECRET}`
+    "apikey": `${process.env.URLKEY}`
   }
 
   return fetch("https://api.rebrandly.com/v1/links", {
