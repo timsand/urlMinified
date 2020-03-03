@@ -6,7 +6,7 @@ const Rebranded = ({ url, reset }) => {
 
   return (
     <div id="RebrandedContainer">
-      <div id="RebrandedUrlContainer">
+      <div>
         <span>Success! Your new URL is: </span>
         <a href={`http://www.${url}`} >{url}</a>
       </div>

@@ -47,13 +47,8 @@ class App extends React.Component {
   }
 
 
-
-
-
-
-
   render() {
-    const errorMessage = this.state.error ? (<><span>There was an error processing your request. Please try again!</span></>) : (null);
+    const errorMessage = this.state.error ? (<><span id="appErrorMessage">There was an error processing your request. Please try again!</span></>) : (null);
     if (this.state.rebrandedUrl) {
       return (
         <div id="masterContainer">
