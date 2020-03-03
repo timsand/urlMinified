@@ -3,13 +3,14 @@ const SECRET = process.env.urlkey || require('./secrets.js');
 
 const getNewUrl = (destination) => {
 
+  console.log(SECRET);
   let urlToMinify = {
     destination: destination,
     domain: { fullName: "rebrand.ly" }
   }
   let requestHeaders = {
     "Content-Type": "application/json",
-    "apikey": SECRET
+    "apikey": `${SECRET}`
   }
 
   return fetch("https://api.rebrandly.com/v1/links", {
