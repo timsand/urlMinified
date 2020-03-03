@@ -15,3 +15,7 @@ This app comes with some cypress testing. If you want to run a test, make sure t
 
 1) npx cypress open
 2) click on full_site.js
+
+This app contains some mocha/chai testing as well for the API. Again, replace process.env.URLKEY with a key. Then run:
+
+1) npm test
