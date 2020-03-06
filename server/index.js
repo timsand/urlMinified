@@ -52,6 +52,7 @@ app.post('/miniurl', (req, res) => {
         let shortCode = encryptSHA1(destination).substring(0, 15);
         let shortUrl;
         if (process.env.domain) {
+          //can be expanded upon later, create more meaningful links than localhost
           shortUrl = `${process.env.domain}/sh/${shortCode}`;
         } else {
           shortUrl = `http://www.localhost:${port}/sh/${shortCode}`;
