@@ -14,10 +14,8 @@ app.use(express.json());
 app.use(express.static(indexHTML));
 
 
-//srced from https://stackoverflow.com/questions/6984139/how-can-i-get-the-sha1-hash-of-a-string-in-node-js
-//Some note there about how SHA1 is currently broken... warrants further investigation
-const getSHA1ofJSON = (input) => {
-  return crypto.createHash('sha1').update(JSON.stringify(input)).digest('hex');
+const encryptSHA1 = (input) => {
+  return crypto.createHash('sha1').update(input).digest('hex');
 }
 
 app.post('/miniurl', (req, res) => {
@@ -51,7 +49,7 @@ app.post('/miniurl', (req, res) => {
         //entry in database does not exist, create entry
         //Increasing potential hash collisions by getting substring, can change later...
         //For demo purposes only
-        let shortCode = getSHA1ofJSON(destination).substring(0, 15);
+        let shortCode = encryptSHA1(destination).substring(0, 15);
         let shortUrl;
         if (process.env.domain) {
           shortUrl = `${process.env.domain}/sh/${shortCode}`;
