@@ -14,6 +14,8 @@ app.use(express.json());
 app.use(express.static(indexHTML));
 
 
+//srced from https://stackoverflow.com/questions/6984139/how-can-i-get-the-sha1-hash-of-a-string-in-node-js
+//Some note there about how SHA1 is currently broken... warrants further investigation
 const getSHA1ofJSON = (input) => {
   return crypto.createHash('sha1').update(JSON.stringify(input)).digest('hex');
 }
