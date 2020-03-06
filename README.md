@@ -6,7 +6,7 @@ This is a fairly simple app that minifies urls. To set it up:
 
 1) Clone down the repo
 2) npm install
-3) Replace the process.env.URLKEY with an appropriate rebrandly API Key in server/rebrandly.js
+3) Ensure that the MongoDB Atlas connection string is correct, and that it will accept connections to your local machine (by default it only accepts whitelisted connections)
 4) npm run build
 5) npm run server
 
