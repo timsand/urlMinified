@@ -11,11 +11,11 @@ This is a fairly simple app that minifies urls. To set it up:
 5) npm run server
 
 
-This app comes with some cypress testing. If you want to run a test, make sure that you replace process.env.URLKEY with the appropriate API key. Afterwards you can run:
+This app comes with some cypress testing. If you want to run a test, run:
 
 1) npx cypress open
 2) click on full_site.js
 
-This app contains some mocha/chai testing as well for the API. Again, replace process.env.URLKEY with a key. Then run:
+This app contains some mocha/chai testing as well for the API. Run:
 
 1) npm test
