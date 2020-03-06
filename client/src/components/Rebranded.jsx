@@ -8,7 +8,7 @@ const Rebranded = ({ url, reset }) => {
     <div id="RebrandedContainer">
       <div>
         <span>Success! Your new URL is: </span>
-        <a href={`http://www.${url}`} >{url}</a>
+        <a href={`${url}`} >{url}</a>
       </div>
       <div id="RebrandedButtonContainer">
         <button id="RebrandedHomeButton" onClick={() => reset()}>Another URL</button>

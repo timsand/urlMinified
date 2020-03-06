@@ -13,11 +13,11 @@ mongoose.connect(`mongodb+srv://kazoo:kazootest@kazoo-iixhb.mongodb.net/test?ret
     console.log(`errors connecting to db...    ${err}`)
   })
 
-const findShortUrl = (longUrl) => {
+const findShortUrlFromLong = (longUrl) => {
   return new Promise((resolve, reject) => {
     dbModel.findOne({ longUrl: longUrl })
       .then((result) => {
-        resolve(result)
+        resolve(result.shortUrl)
       })
       .catch((err) => {
         reject(err);
@@ -25,12 +25,24 @@ const findShortUrl = (longUrl) => {
   })
 }
 
-const saveUrl = (shortUrl, longUrl) => {
-  let urlObject = { shortUrl: shortUrl, longUrl: longUrl }
+const findShortUrlFromCode = (code) => {
   return new Promise((resolve, reject) => {
-    dbModel.save(urlObject)
+    dbModel.findOne({ shortCode: code })
+      .then((results) => {
+        resolve(results);
+      })
+      .catch((err) => {
+        reject(err);
+      })
+  })
+}
+
+const saveUrl = (shortCode, shortUrl, longUrl) => {
+  let urlObject = { shortCode: shortCode, shortUrl: shortUrl, longUrl: longUrl }
+  let newUrlEntry = new dbModel(urlObject);
+  return new Promise((resolve, reject) => {
+    newUrlEntry.save()
       .then((result) => {
-        console.log(result);
         resolve(result);
       })
       .catch((err) => {
@@ -42,4 +54,4 @@ const saveUrl = (shortUrl, longUrl) => {
 
 
 
-module.exports = { findShortUrl, saveUrl };
+module.exports = { findShortUrlFromLong, saveUrl, findShortUrlFromCode };
