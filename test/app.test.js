@@ -5,7 +5,7 @@ const chaiHttp = require('chai-http');
 const { expect } = require('chai');
 chai.use(chaiHttp);
 describe('Server', () => {
-  it('should do basic test thing', (done) => {
+  it('should hit default route successfully', (done) => {
     chai
       .request(app)
       .get("/")
@@ -44,7 +44,21 @@ describe('Server', () => {
       .send({ destination: "https://www.youtube.com/watch?v=71sj1LVELoc" })
       .end((err, res) => {
         expect(res).have.status(200);
-        expect(res.text).to.contain('rebrand.ly')
+        //need a better way to test this
+        expect(res.text).to.contain('/sh/');
+        done();
+      })
+  })
+
+  xit('should redirect to a good URL', (done) => {
+    //http://www.localhost:3000/sh/3yPTeeom
+    //will use entry created in above test
+    //current test is broken and needs fixing
+    chai
+      .request(app)
+      .get("/sh/3yPTeeom").redirects(1)
+      .end((err, res) => {
+        res.should.redirectTo("https://www.youtube.com/watch?v=71sj1LVELoc")
         done();
       })
   })
