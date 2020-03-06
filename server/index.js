@@ -4,15 +4,19 @@ const path = require('path');
 const app = express();
 const port = 3000;
 const indexHTML = path.join(__dirname, '../client/dist');
-const getNewUrl = require('./rebrandly.js');
+// const getNewUrl = require('./rebrandly.js');
 const validUrl = require('valid-url');
-const shortid = require('shortid');
 const db = require('../db/db.js');
+const crypto = require('crypto');
 
 app.use(cors());
 app.use(express.json());
 app.use(express.static(indexHTML));
 
+
+const getSHA1ofJSON = (input) => {
+  return crypto.createHash('sha1').update(JSON.stringify(input)).digest('hex');
+}
 
 app.post('/miniurl', (req, res) => {
   let destination = req.body.destination;
@@ -43,7 +47,9 @@ app.post('/miniurl', (req, res) => {
       })
       .catch((err) => {
         //entry in database does not exist, create entry
-        let shortCode = shortid.generate();
+        //Increasing potential hash collisions by getting substring, can change later...
+        //For demo purposes only
+        let shortCode = getSHA1ofJSON(destination).substring(0, 15);
         let shortUrl;
         if (process.env.domain) {
           shortUrl = `${process.env.domain}/sh/${shortCode}`;
