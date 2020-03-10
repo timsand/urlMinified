@@ -8,6 +8,16 @@ const indexHTML = path.join(__dirname, '../client/dist');
 const validUrl = require('valid-url');
 const db = require('../db/db.js');
 const crypto = require('crypto');
+const mongoose = require('mongoose');
+const dbOptions = process.env.dbtesting ? { dbName: 'kazooTesting' } : { dbName: 'kazoo' };
+
+mongoose.connect(`mongodb+srv://kazoo:kazootest@kazoo-iixhb.mongodb.net/test?retryWrites=true&w=majority`, dbOptions)
+  .then(() => {
+    console.log('db connected')
+  })
+  .catch((err) => {
+    console.log(`errors connecting to db...    ${err}`)
+  })
 
 app.use(cors());
 app.use(express.json());

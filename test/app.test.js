@@ -1,3 +1,4 @@
+process.env.dbtesting = 'dbtesting';
 const app = require('../server/index.js');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
