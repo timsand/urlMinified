@@ -78,6 +78,7 @@ app.get('/sh/:urlCode', (req, res) => {
       res.redirect(url.longUrl)
     })
     .catch((err) => {
+      console.log(err);
       res.status(400).send();
     })
 })

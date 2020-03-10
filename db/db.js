@@ -32,6 +32,7 @@ const findShortUrlFromCode = (code) => {
         resolve(results);
       })
       .catch((err) => {
+        console.log(err);
         reject(err);
       })
   })

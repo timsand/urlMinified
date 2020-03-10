@@ -4,6 +4,7 @@ const chaiHttp = require('chai-http');
 
 const { expect } = require('chai');
 chai.use(chaiHttp);
+//Flushing the database may require these tests to be changed...
 describe('Server', () => {
   it('should hit default route successfully', (done) => {
     chai
@@ -50,15 +51,14 @@ describe('Server', () => {
       })
   })
 
-  xit('should redirect to a good URL', (done) => {
-    //http://www.localhost:3000/sh/3yPTeeom
+  it('should redirect to a good URL', (done) => {
     //will use entry created in above test
-    //current test is broken and needs fixing
     chai
       .request(app)
-      .get("/sh/3yPTeeom").redirects(1)
+      .get("/sh/9c0e6b2a8baa01f").redirects(0)
       .end((err, res) => {
-        res.should.redirectTo("https://www.youtube.com/watch?v=71sj1LVELoc")
+        expect(res).to.have.status(302)
+        expect(res).to.redirectTo("https://www.youtube.com/watch?v=71sj1LVELoc")
         done();
       })
   })
